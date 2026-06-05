@@ -9,6 +9,44 @@ This script pings two targets at regular intervals:
 
 It saves the results to a CSV file on the user's Desktop so the data can be opened in Excel, Google Sheets, LibreOffice Calc, OpenOffice Calc, or even Notepad.
 
+## Changing the Ping Interval
+
+The script waits a set number of seconds between each test cycle. By default, this may be set to something like 15 or 60 seconds.
+
+To change how often the script runs, edit this line near the top of the batch file:
+
+```bat
+set INTERVAL_SECONDS=15
+```
+
+The number is the delay in seconds.
+
+Examples:
+
+```bat
+set INTERVAL_SECONDS=15
+```
+
+Runs the test about every 15 seconds.
+
+```bat
+set INTERVAL_SECONDS=60
+```
+
+Runs the test about once per minute.
+
+```bat
+set INTERVAL_SECONDS=300
+```
+
+Runs the test about once every 5 minutes.
+
+Do not add spaces around the equals sign. In Windows batch files, variable assignments should be written like this:
+
+```bat
+set NAME=value
+```
+
 ## What This Is For
 
 This tool is meant for basic troubleshooting when an internet connection feels slow, unreliable, or inconsistent.
@@ -31,6 +69,7 @@ It is not a full network diagnostic suite. It is a simple logging tool meant to 
 ## How It Works
 
 The script automatically looks for the computer's default gateway. In most homes, this is the Wi-Fi router.
+It uses a 'route print' command to retrieve the computer's network information and parses the response to identify the default gateway IP.
 
 Then it pings:
 
